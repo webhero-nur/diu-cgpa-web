@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU Full Result</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <header>
+        <h1>Accademic Result (Full)</h1>
+    </header>
+    <main>
+        <!-- search container -->
+        <section id="search-container" class="container my-5">
+            <h3>Search Container</h3>
+            <div id="id-search" class="d-flex">
+                <div class="d-flex align-items-center me-3">
+                    <p>Student ID: <input class="px-2 py-2" type="text" name="" placeholder="ex. 192-15-2287"
+                            id="id-input"></p>
+                </div>
+                <div>
+                    <button id="search-btn" class="btn btn-primary py-2 px-4">Get Result</button>
+                </div>
+            </div>
+        </section>
+        <!-- student information container -->
+        <section id="student-info" class="container my-5">
+            <h3>Student Info Container</h3>
+            <hr>
+            <table class="w-100">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="px-3">Program</td>
+                        <td id="student-program"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-3">Faculty</td>
+                        <td id="student-faculty"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-3">Name of Student</td>
+                        <td id="student-name"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-3">Student Id</td>
+                        <td id="student-id"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-3">Enrollment</td>
+                        <td id="student-enrolled"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-3">Batch</td>
+                        <td id="student-batch"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- student result container -->
+        <section id="result-section" class="container my-5">
+            <h3>Result Details Container</h3>
+            <hr>
+            <div id="results-container">
+
+            </div>
+            <div id="loading-spinner" class="text-center d-none">
+                <div class="spinner-border text-info" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
