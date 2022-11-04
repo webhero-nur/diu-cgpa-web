@@ -70,16 +70,16 @@ const detailResultView = semesterResult => {
         semesterResultDiv.innerHTML = `
             <div class="mt-5">
                 <p>Academic Result of: <span class="bg-info px-1 rounded">${semesterResult[0].semesterName} ${semesterResult[0].semesterYear}</span> for <span class="bg-warning px-1 rounded">${semesterResult[0].studentId}</p>
-                <table class="w-100">
+                <table class="w-100 p-3">
                     <thead>
                         <tr style="background-color: blue; color: white;">
-                            <!-- <th class="px-1">Course Id</th> -->
+                            <th class="px-1">Course Id</th>
                             <th class="px-1">Course Code</th>
                             <th class="px-1">Course Title</th>
                             <th class="px-1">Credit</th>
                             <th class="px-1">Grade</th>
                             <th class="px-1">Grade Point</th>
-                            <!-- <th class="px-1">CGPA</th> -->
+                            <th class="px-1">CGPA</th>
                         </tr>
                     </thead>
                     <tbody id="${dynamicTRId}">
@@ -98,13 +98,13 @@ const detailResultView = semesterResult => {
             // }
             // result.push(newCourse);
             subjectTr.innerHTML = `
-            <!-- <td class="px-1">${subject.courseId}</td> -->
+            <td class="px-1">${subject.courseId}</td>
             <td class="px-1">${subject.customCourseId}</td>
             <td class="px-1">${subject.courseTitle}</td>
             <td class="px-1">${subject.totalCredit}</td>
             <td class="px-1">${subject.gradeLetter}</td>
             <td class="px-1">${subject.pointEquivalent}</td>
-            <!-- <td class="px-1">${subject.cgpa}</td> -->
+            <td class="px-1">${subject.cgpa}</td>
             `;
             subjectRow.appendChild(subjectTr);
             toggleSpinner(false);
