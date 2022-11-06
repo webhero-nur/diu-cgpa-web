@@ -1,9 +1,13 @@
+let creditTaken = 0;
+let creditMultiplySubjectGP = 0;
 const setInnerTextById = (elementId, value = '') => {
     const element = document.getElementById(elementId);
     element.innerText = value;
 }
 
 document.getElementById('search-btn').addEventListener('click', function () {
+    creditTaken = 0;
+    creditMultiplySubjectGP = 0;
     semesterCount = 0;
     const idInputField = document.getElementById('id-input');
     const idInputValue = idInputField.value;
@@ -15,7 +19,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
             .then(data => {
                 console.log(data.studentId);
                 if (data.studentId === null) {
-                    alert('ID Does Not Exist');
+                    alert('Invalid Student ID');
                 }
                 else {
                     studentInfoView(data);
@@ -61,9 +65,11 @@ const studentInfoView = studentInfo => {
     setInnerTextById('student-batch', studentInfo.batchNo);
 }
 
+
 const detailResultView = semesterResult => {
     if (semesterResult.length != 0) {
-        console.log(semesterResult);
+        // console.log(semesterResult);
+
         const resultsContainer = document.getElementById('results-container');
         const semesterResultDiv = document.createElement('div');
         const dynamicTRId = `${semesterResult[0].semesterName}-${semesterResult[0].semesterYear}`;
@@ -80,6 +86,7 @@ const detailResultView = semesterResult => {
                             <th class="px-1">Grade</th>
                             <th class="px-1">Grade Point</th>
                             <th class="px-1">CGPA</th>
+                            <th class="px-1">Credit Count</th>
                         </tr>
                     </thead>
                     <tbody id="${dynamicTRId}">
@@ -90,13 +97,10 @@ const detailResultView = semesterResult => {
         resultsContainer.appendChild(semesterResultDiv);
 
         semesterResult.forEach(subject => {
+            creditTaken += subject.totalCredit;
+            creditMultiplySubjectGP += subject.pointEquivalent * subject.totalCredit;
             const subjectRow = document.getElementById(dynamicTRId);
             const subjectTr = document.createElement('tr');
-            // const newCourse = {
-            //     id: subject.courseId,
-            //     gpa: subject.pointEquivalent,
-            // }
-            // result.push(newCourse);
             subjectTr.innerHTML = `
             <td class="px-1">${subject.courseId}</td>
             <td class="px-1">${subject.customCourseId}</td>
@@ -105,9 +109,27 @@ const detailResultView = semesterResult => {
             <td class="px-1">${subject.gradeLetter}</td>
             <td class="px-1">${subject.pointEquivalent}</td>
             <td class="px-1">${subject.cgpa}</td>
+            <td class="px-1">${creditTaken}</td>
             `;
             subjectRow.appendChild(subjectTr);
             toggleSpinner(false);
         });
+
+        const GPA = calculateGPA(semesterResult[0].semesterId, creditTaken, creditMultiplySubjectGP);
+
+        if (semesterResult[0].semesterId === '222') {
+
+        }
     }
+}
+
+const calculateGPA = (semester, credit, result) => {
+    if (semester === '222') {
+        let GPA = result / credit;
+        showGPA(credit, GPA);
+    }
+}
+
+const showGPA = (totalCreditCompleted, resultFinal) => {
+    console.log(totalCreditCompleted, resultFinal);
 }
