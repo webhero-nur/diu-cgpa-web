@@ -9,6 +9,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
     creditTaken = 0;
     creditMultiplySubjectGP = 0;
     semesterCount = 0;
+    toggleBtnById('search-btn', true);
     const idInputField = document.getElementById('id-input');
     const idInputValue = idInputField.value;
     if (idInputValue != '') {
@@ -20,6 +21,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
                 console.log(data.studentId);
                 if (data.studentId === null) {
                     alert('Invalid Student ID');
+                    toggleBtnById('search-btn', false);
                 }
                 else {
                     studentInfoView(data);
@@ -41,6 +43,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
     }
     else {
         alert('ID cannot be empty');
+        toggleBtnById('search-btn', false);
     }
 });
 
@@ -51,6 +54,16 @@ const toggleSpinner = (isVisible = true) => {
     }
     else {
         spinner.classList.add('d-none');
+    }
+}
+
+const toggleBtnById = (id, isDisabled) => {
+    const button = document.getElementById(id);
+    if (isDisabled === true) {
+        button.setAttribute('disabled', 'true');
+    }
+    else {
+        button.removeAttribute('disabled');
     }
 }
 
@@ -79,14 +92,14 @@ const detailResultView = semesterResult => {
                 <table class="w-100 p-3">
                     <thead>
                         <tr style="background-color: blue; color: white;">
-                            <th class="px-1">Course Id</th>
+                            <!-- <th class="px-1">Course Id</th> -->
                             <th class="px-1">Course Code</th>
                             <th class="px-1">Course Title</th>
                             <th class="px-1">Credit</th>
                             <th class="px-1">Grade</th>
                             <th class="px-1">Grade Point</th>
                             <th class="px-1">CGPA</th>
-                            <th class="px-1">Credit Count</th>
+                            <!-- <th class="px-1">Credit Count</th> -->
                         </tr>
                     </thead>
                     <tbody id="${dynamicTRId}">
@@ -101,24 +114,25 @@ const detailResultView = semesterResult => {
             creditMultiplySubjectGP += subject.pointEquivalent * subject.totalCredit;
             const subjectRow = document.getElementById(dynamicTRId);
             const subjectTr = document.createElement('tr');
+            // subjectTr.classList.add("d-flex", "justify-content-between");
             subjectTr.innerHTML = `
-            <td class="px-1">${subject.courseId}</td>
+            <!-- <td class="px-1">${subject.courseId}</td> -->
             <td class="px-1">${subject.customCourseId}</td>
             <td class="px-1">${subject.courseTitle}</td>
             <td class="px-1">${subject.totalCredit}</td>
             <td class="px-1">${subject.gradeLetter}</td>
             <td class="px-1">${subject.pointEquivalent}</td>
             <td class="px-1">${subject.cgpa}</td>
-            <td class="px-1">${creditTaken}</td>
+            <!-- <td class="px-1">${creditTaken}</td> -->
             `;
             subjectRow.appendChild(subjectTr);
             toggleSpinner(false);
         });
 
-        const GPA = calculateGPA(semesterResult[0].semesterId, creditTaken, creditMultiplySubjectGP);
+        toggleBtnById('search-btn', false);
 
         if (semesterResult[0].semesterId === '222') {
-
+            calculateGPA(semesterResult[0].semesterId, creditTaken, creditMultiplySubjectGP);
         }
     }
 }
