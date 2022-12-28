@@ -27,7 +27,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
                     studentInfoView(data);
                     document.getElementById('results-container').textContent = ``;
 
-                    const semesterIds = ['083', '091', '092', '093', '101', '102', '103', '111', '112', '113', '121', '122', '123', '131', '132', '133', '141', '142', '143', '151', '152', '153', '161', '162', '163', '171', '172', '173', '181', '182', '183', '191', '192', '193', '201', '202', '203', '211', '212', '213', '221', '222'];
+                    const semesterIds = ['171', '172', '173', '181', '182', '183', '191', '192', '193', '201', '202', '203', '211', '212', '213', '221', '222', '223'];
                     // const semesterIds = ['221', '222'];
 
                     for (const semesterId of semesterIds) {
