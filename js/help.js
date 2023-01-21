@@ -1,4 +1,4 @@
-document.getElementById("id-input").value = '181-15-1966';
+// document.getElementById("id-input").value = '181-15-1966';
 
 let completedCourseDetails = [];
 const passedCourses = subject => {
