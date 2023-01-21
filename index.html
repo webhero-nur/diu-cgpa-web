@@ -12,7 +12,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
+<body>
     <header>
         <h1 class="text-center py-4 bg-light">Accademic Result (Full)<sup>many bug to fix</sup></h1>
     </header>
@@ -22,8 +22,8 @@
             <h3>Search Container</h3>
             <div id="id-search" class="d-flex">
                 <div class="d-flex align-items-center me-3">
-                    <p>Student ID: <input class="px-2 py-2" type="text" name="" placeholder="ex. 192-15-2287"
-                            id="id-input"></p>
+                    <p>Student ID: <input class="px-2 py-2" type="text" name="" placeholder="ex. 142-31-13971"
+                            id="id-input" autofocus></p>
                 </div>
                 <div>
                     <button id="search-btn" class="btn btn-primary py-2 px-4">Get Result</button>
@@ -66,8 +66,16 @@
             </table>
         </section>
         <!-- student result container -->
-        <section id="result-section" class="container my-5 mx-auto" style="max-width: 1000px;">
-            <h3>Result Details Container</h3>
+        <section id="result-section" class="container my-5 mx-auto d-none" style="max-width: 1000px;">
+            <div class="d-flex">
+                <h3>Details Result</h3>
+                <div id="btn-selection-container" class="d-none ms-3">
+                    <button id="semester-result-btn" class="btn btn-primary py-2 px-4 me-2" disabled>Semester
+                        Wise</button>
+                    <button id="passed-course-btn" onclick="viewAllCourseResult()"
+                        class="btn btn-primary py-2 px-4">Passed Courses</button>
+                </div>
+            </div>
             <hr>
             <div id="results-container">
 
@@ -79,6 +87,7 @@
             </div>
         </section>
     </main>
+    <script src="js/help.js"></script>
     <script src="js/index.js"></script>
 </body>
 

@@ -3,12 +3,16 @@
     margin: 0;
 }
 
+body {
+    background-color: #AAA;
+}
+
 tr:nth-child(2n) {
-    background-color: lightskyblue;
+    background-color: #80DEEA;
 }
 
 tr:nth-child(2n+1) {
-    background-color: #e9e9e9;
+    background-color: #B2EBF2;
 }
 
 td {
@@ -20,5 +24,17 @@ thead {
 }
 
 table {
-    border-radius: 50px;
+    border: 5px solid white;
+}
+
+.bg-vallagchey {
+    background-color: #4f46e5;
+}
+
+.text-purple {
+    color: #096e6e;
+}
+
+.not-allowed {
+    cursor: not-allowed !important;
 }
