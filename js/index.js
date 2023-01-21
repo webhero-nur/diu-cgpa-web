@@ -7,6 +7,9 @@ const setInnerTextById = (elementId, value = '') => {
 
 document.getElementById('search-btn').addEventListener('click', function () {
     callForWork();
+    document.getElementById("semester-result-btn").setAttribute("disabled", true);
+    document.getElementById("semester-result-btn").classList.add("not-allowed");
+    document.getElementById("passed-course-btn").classList.remove("not-allowed");
 });
 
 document.getElementById("semester-result-btn").addEventListener('click', function () {
